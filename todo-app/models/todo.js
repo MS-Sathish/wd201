@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     static markAsCompleteditems(userId) {
       return this.findAll({
         where: {
-          completed: true,
+          completed: false,
           userId,
         },
         order: [["id", "ASC"]],
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.findAll({
         where: {
           dueDate: { [Op.eq]: new Date() },
-          completed: true,
+          completed: false,
           userId,
         },
        
@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.findAll({
         where: {
           dueDate: { [Op.gt]: new Date() },
-          completed: true,
+          completed: false,
           userId,
         },
         order: [["dueDate", "ASC"]],
