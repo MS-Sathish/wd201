@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     static markAsCompleteditems(userId) {
       return this.findAll({
         where: {
-          completed: false,
+          completed: true,
           userId,
         },
         order: [["id", "ASC"]],
