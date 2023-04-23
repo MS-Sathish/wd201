@@ -43,7 +43,7 @@
                   <span style="color: transparent;" id="id"><%= userid%></span>
                 </div>
               </div>
-              <% if(userid==27 || userid == user.accessid){ %>
+              <% if(userid==1 || userid == user.accessid){ %>
                 <div class="flex-1">
               <button class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 editBtn" onclick=""><%= user.id%></button>
               <button class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2 deleteBtn" onclick=""><%= user.id%></button>
@@ -65,7 +65,7 @@
                       <span style="color: transparent;" id="id"><%= userid%></span>
                     </div>
                   </div>
-                  <% if(userid==27){ %>
+                  <% if(userid==1){ %>
                     <div class="flex-1">
                   <button class="flex-1 inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 editBtn" onclick=""><%= user.id%></button>
                   <button class="flex-1 inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2 float-left     deleteBtn" onclick=""><%= user.id%></button>
