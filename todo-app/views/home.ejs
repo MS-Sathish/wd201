@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <% if(userid === 27){%>
+    <% if(userid === 1){%>
         <div class="grid place-items-center">
        <h1 class="py-4 text-4xl font-extrabold text-gray-900 dark:text-white" >Create a new sport</h1>
     <form action="/sports" method="post">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="px-6 pt-4 pb-2">
             
-                    <% if(userid === 27){%>
+                    <% if(userid === 1){%>
                 <button class="text-white bg-green-600 hover:bg-red-800 font-medium rounded px-5 py-2 deleteBtn" onclick="">Delete</button>
                 <button class="text-white bg-green-600 hover:bg-green-800 font-medium rounded px-5 py-2 editBtn" onclick="">Edit</button>
                  <%}%>
