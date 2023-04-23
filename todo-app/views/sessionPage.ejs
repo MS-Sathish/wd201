@@ -24,7 +24,7 @@
             })
         })
     </script>
-    <%if(userid == 27){%>
+    <%if(userid == 1){%>
     <form id="form" action="" method="post">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" /> 
         <input type="text" name="playername" id="">
@@ -41,7 +41,7 @@
         <% sessionPlayerDetail.forEach(function(n){ %>
             <li><%=n.playersname%>
             </li>
-            <%if(userid == 27){%>
+            <%if(userid == 1){%>
             <button onclick="" class="deletePlayer"><%=n.id%></button>
             <%}%>
             <%})%>
