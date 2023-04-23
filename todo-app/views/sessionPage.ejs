@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class=""><%= sessionDetail.sports %></h1> <span id="sportId"><%= sessionDetail.id %></span>
+    <p>Date: <%= sessionDetail.Date%></p>
+    <p>Place: <%= sessionDetail.location %></p>
+    <p>Players</p>
+    <p>Total: </p><span id="id1"><%= getCount%></span>/<span id="id2"><%= sessionDetail.count %></span>
+    <button onclick="" class="joinPlayer" id="joinPlayer1"><%= userid %></button>
+    <script>
+        let joinPlayer = document.querySelectorAll("button.joinPlayer");
+        joinPlayer.forEach((b) => {
+            b.addEventListener("click", function(e) {
+                event.preventDefault()
+                this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                window.location.href = "join/Player/" + encodeURIComponent(this.innerText) + "/" + encodeURIComponent(document.getElementById("sportId").innerText)  
+            })
+        })
+    </script>
+    <%if(userid == 27){%>
+    <form id="form" action="" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" /> 
+        <input type="text" name="playername" id="">
+        <button type="submit">Add</button>
+    </form>
+    <%}%>
+    <script>
+        if(document.getElementById("id1").innerText >= document.getElementById("id2").innerText){
+            document.getElementById("form").style.display = "none"
+            document.getElementById("joinPlayer1").style.display = "none"
+        }
+    </script>
+    <ul>
+        <% sessionPlayerDetail.forEach(function(n){ %>
+            <li><%=n.playersname%>
+            </li>
+            <%if(userid == 27){%>
+            <button onclick="" class="deletePlayer"><%=n.id%></button>
+            <%}%>
+            <%})%>
+    </ul>
+            <script>
+            let deletePlayer = document.querySelectorAll("button.deletePlayer");
+            deletePlayer.forEach((b) => {
+                b.addEventListener("click", function(e) {
+                    event.preventDefault()
+                    this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                    window.location.href = "delete/Player/" + encodeURIComponent(this.innerText) + "/" + encodeURIComponent(document.getElementById("sportId").innerText)  
+                })
+            })
+        </script>
+
+</body>
+</html>
