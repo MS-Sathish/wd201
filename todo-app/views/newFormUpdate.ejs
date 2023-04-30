@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="py-3">
+        <label for="date">Date:</label>
+        <input type="date" name="date" value="<%= getUpdateDetails.Date %>" required class="border border-gray-300 text-gray-900 rounded p-2">
+        </div>
+        <div class="py-3">
+        <label for="location">where will this session be played:</label>
+        <input type="text" name="location" value="<%= getUpdateDetails.location %>" required class="border border-gray-300 text-gray-900 rounded p-2">
+    </div>
+
+    <div class="py-3">
+        <label for="count">How many:</label>
+        <input type="number" name="count" value="<%= getUpdateDetails.count %>" required class="border border-gray-300 text-gray-900 rounded p-2">
+    </div>
+    <div class="py-3">
+        <button type="submit" class="text-white bg-green-600 hover:bg-green-800 font-medium rounded px-5 py-2">Update</button>
+        </div>
+    </form>
+</body>
+</html>
