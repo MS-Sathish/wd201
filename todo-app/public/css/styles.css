@@ -1,0 +1,38 @@
+body{
+    background-color: whitesmoke;
+    height: 100%;
+    margin: 0;  
+}
+.todo-item:hover .trash-icon{
+    display: block;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    
+  }
+  #home {
+    background:  url("i.jpeg");
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+  }  
+  #pg {
+    background:  url("69.jpg");
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+  }  
+  #r {
+    background:  url("r.jpg");
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+  }  
+  

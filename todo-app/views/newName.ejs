@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <section id="r">
+    <div class = "grid grid-clos-4">
+        <div class="col-start-2 col-span-2">
+    <form action="" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="text" name="newName" id="" style="border: 2px solid black;">
+        <button type="submit">Update</button>
+    </form>
+    </div>
+    </div>
+    </section>
+</body>
+</html>

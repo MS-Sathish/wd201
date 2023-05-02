@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./css/styles.css" rel="stylesheet">
+    <title>Document</title>
+   
+   
+</head>
+
+<body class="bg-sky-100">
+    <div class = "grid grid-clos-2">
+        <div class="col-start-2 col-span-1">
+            
+        <h1 class="py-5 text-6xl font-extrabold text-gray-900 dark:text-white ml-7 text-slate-500">Sports Schedular</h1>
+        </div>
+        </div>
+        <div class = "grid grid-clos-5">
+            <div class="col-start-3 col-span-2">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                   
+                    <div class="px-6 pt-4 pb-2 bg-gray-100">
+                        <div class="font-bold text-xl mb-2 pt-4"><%= sessionDetail.sports %><span id="sportId" style="color:transparent"><%= sessionDetail.id %></span></div>
+                      
+                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">DATE: <%= sessionDetail.Date%></span>
+                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Place: <%= sessionDetail.location %></span>
+                      <p class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Players</p>
+                      <p class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Total: </p><span id="id1" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= getCount%></span>/<span id="id2" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= sessionDetail.count %></span>
+                      <button onclick="" class="joinPlayer" id="joinPlayer1"><span style="color:transparent"><%= userid %></span></button>
+                    
+                
+  
+    <script>
+        let joinPlayer = document.querySelectorAll("button.joinPlayer");
+        joinPlayer.forEach((b) => {
+            b.addEventListener("click", function(e) {
+                event.preventDefault()
+                this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                window.location.href = "join/Player/" + encodeURIComponent(this.innerText) + "/" + encodeURIComponent(document.getElementById("sportId").innerText)  
+            })
+        })
+    </script>
+    <br>
+    <%if(emailid === "sathish@123"  ){%>
+    <form id="form" action="" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" /> 
+        <input type="text" class="inline-block bg-gray-200 mr-2 ml-5 mb-1 px-3" name="playername" id="">
+        <button class="inline-block bg-green-200 rounded-full px-12 py-1 text-sm font-semibold text-gray-700" type="submit">Add</button>
+    </form>
+    <br>
+    <%}%>
+
+    <script>
+        if(document.getElementById("id1").innerText >= document.getElementById("id2").innerText){
+            document.getElementById("form").style.display = "none"
+            document.getElementById("joinPlayer1").style.display = "none"
+        }
+    </script>
+    <table class="border-collapse border border-slate-40 ml-1 mb-4">
+    <thead>
+      <tr>
+        <th class="px-15 bg-blue-200">Players</th>
+        <%if(emailid === "sathish@123"){%>
+        <th class="px-15            bg-red-200">Delete</th>
+        <%}%>
+      </tr>
+    </thead>
+    <tbody>
+        <% sessionPlayerDetail.forEach(function(n){ %>
+           
+            
+            
+      <tr>
+        <td class="border border-slate-300  px-16"><%=n.playersname%></td>
+        <%if(emailid === "sathish@123"){%>
+        <td class="border border-slate-300 px-16"><button onclick="" class="deletePlayer"><span style=""><%=n.id%></span></button></td>
+        <%}%>
+            <%})%>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+</div>  
+        </div>
+
+            <script>
+            let deletePlayer = document.querySelectorAll("button.deletePlayer");
+            deletePlayer.forEach((b) => {
+                b.addEventListener("click", function(e) {
+                    event.preventDefault()
+                    this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                    window.location.href = "delete/Player/" + encodeURIComponent(this.innerText) + "/" + encodeURIComponent(document.getElementById("sportId").innerText)  
+                })
+            })
+        </script>
+       
+
+</body>
+</html>

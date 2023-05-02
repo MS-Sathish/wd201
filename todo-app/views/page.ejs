@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <section id="pg">
+    <div class="grid place-items-center">
+    <h1 id="sportName"style="font-family: 'Yeseva One', cursive;" class="py-4 text-4xl font-extrabold text-gray-900 dark:text-white"><%= Sportname %></h1>
+    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+     <a href="/pages" class="href2">Create Sport</a></button>
+     <br>
+    <script>
+        let a = document.querySelectorAll("a.href2");
+        a.forEach((b) => {
+            b.addEventListener("click", function(e) {
+                event.preventDefault()
+                let url = "create/" + encodeURIComponent(document.getElementById("sportName").innerText)
+                this.setAttribute("href", url)
+                window.location.href = url
+            })
+        })
+    </script>
+    
+    <h1 style="font-family: 'Carter One', cursive;">Upcoming session</h1>
+        <% singleSport.forEach(function(user) { %>
+            <% if(user.Date >= date){%>
+                <br>
+            <div class="bg-blue-200 max-w-sm rounded overflow-hidden shadow-lg bg-white-600">
+                <p style="position:absolute; width: 21%; height: 55px; background-color: transparent; color: transparent; cursor: pointer;" onclick="" class="card"><%= user.id%></p>
+                <div class="px-6 py-2 pt-4 pb-2">
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1"><%= user.Date %></span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%=user.location %></span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%=user.count %></span>
+                </div>
+              </div>
+              <div class="px-2">
+                <span style="color: transparent;" id="id"><%= user.id%></span>
+                <span style="color: transparent;" id="id"><%= userid%></span>
+                </div>
+              <% if(emailid=="sathish@123" || userid == user.accessid){ %>
+                <div class="flex-1">
+              <button class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 editBtn" onclick="">+<%= user.id%></button>
+              <button class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2 deleteBtn" onclick=""><%= user.id%></button>
+             </div>
+              <%}%>
+              <% }%>
+              <% }) %>
+              <br>
+              <h1 style="font-family: 'Carter One', cursive;">EXpired session</h1>
+        <% singleSport.forEach(function(user) { %>
+            <% if(user.Date < date){%>
+                <br>
+            <div class="bg-blue-200 max-w-sm rounded overflow-hidden shadow-lg bg-white-600">
+                <p style="position:absolute; width: 21%; height: 55px; background-color: transparent; color: transparent; cursor: pointer;" onclick="" class="card"><%= user.id%></p>
+                <div class="px-6 py-2 pt-4 pb-2">
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1"><%= user.Date %></span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%=user.location %></span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%=user.count %></span>
+                </div>
+              </div>
+              <div class="px-2">
+                <span style="color: transparent;" id="id"><%= user.id%></span>
+                <span style="color: transparent;" id="id"><%= userid%></span>
+                </div>
+              <% if(emailid=="sathish@123" || userid == user.accessid){ %>
+                <div class="flex-1">
+              <button class="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 editBtn" onclick=""><%= user.id%></button>
+              <button class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2 deleteBtn" onclick=""><%= user.id%></button>
+             </div>
+                  <%} %>
+                        <% }%>
+                  <% }) %>
+    </div>
+        <script>
+            let editBtn = document.querySelectorAll("button.editBtn");
+            editBtn.forEach((b) => {
+                b.addEventListener("click", function(e) {
+                    event.preventDefault()
+                    this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                    window.location.href = "edit/Session/" + encodeURIComponent(this.innerText)    
+                })
+            })
+        </script>
+        <script>
+            let deleteBtn = document.querySelectorAll("button.deleteBtn");
+            deleteBtn.forEach((b) => {
+                b.addEventListener("click", function(e) {
+                    event.preventDefault()
+                    this.setAttribute("onclick", `window.location.href(${encodeURIComponent(this.innerText)})`)
+                    window.location.href = "/Delete/Session/" + encodeURIComponent(this.innerText)    
+                })
+            })
+        </script>
+        <script>
+            let b = document.querySelectorAll("p.card");
+            b.forEach((b) => {
+                b.addEventListener("click", function(e) {
+                    event.preventDefault()
+                    let url = encodeURIComponent(document.getElementById("sportName").innerText) + "/" + encodeURIComponent(this.innerText)
+                    this.setAttribute("href", url)
+                    window.location.href = url
+                })
+            })
+        </script>
+       </section>
+       
+   
+</body>
+</html>
